@@ -1,0 +1,23 @@
+.venv/
+.venv-psf312-test/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Generated local artifacts and reports.
+artifacts/*
+reports/environment/*.json
+reports/experiments/*
+reports/benchmarks/*
+reports/figures/*
+
+# Local caches and model weights must stay outside source control.
+.cache/
+# Only a repository-root weights directory is ignored. Keep the Python package at
+# src/video_intelligence/models/ versionable.
+/models/
+data/managed/
+data/samples/*.mp4
+data/samples/*.mov

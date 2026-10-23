@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-world-video-intelligence"
+version = "0.1.0"
+description = "Resource-aware open-world video intelligence foundation"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "numpy>=1.24",
+  "opencv-python>=4.8",
+  "pydantic>=2.0",
+]
+
+[project.scripts]
+video-intelligence = "video_intelligence.cli:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+video = [
+  "av>=9.0",
+]
+grounding = [
+  "transformers==5.10.2",
+  "Pillow>=10",
+]
+retrieval = [
+  "transformers==5.10.2",
+  "Pillow>=10",
+]
+sam2 = [
+  "transformers==4.57.1",
+  "Pillow>=10",
+]
+vlm = [
+  "transformers==4.57.1",
+  "Pillow>=10",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "scripts", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
